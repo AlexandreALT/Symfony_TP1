@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <a href="./logout">Déconnexion</a>
+        <h1 class="text-3xl font-bold underline">Bienvenue, {{ user_email }}!</h1>
+        <form method='post'>
+            <button name='newMessage' value='newMessage'>+</button>
+        </form>
+
+        {% if new_message is defined %}
+            <form method='post'>
+                <label for='message'>Votre message :</label><br />
+                <textarea name='message' placeholder='Écriver votre message ici...' maxlength='1000' style='resize:vertical;'></textarea><br /><br />
+                <input type='submit' value='Ajouter'>
+                <input type='submit' value='Annuler'>
+            </form>
+        {% endif %}
+    </body>
+</html>
