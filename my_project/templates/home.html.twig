@@ -1,26 +1,36 @@
-﻿<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        <a href="./logout">Déconnexion</a>
-        <h1 class="text-3xl font-bold underline">Bienvenue, {{ user_email }}!</h1>
-        <form method='post'>
-            <button name='newMessage' value='newMessage'>+</button>
-        </form>
+﻿{% extends 'base.html.twig' %}
 
-        {% if new_message is defined %}
-            <form method='post'>
-                <label for='message'>Votre message :</label><br />
-                <textarea name='message' placeholder='Écriver votre message ici...' maxlength='1000' style='resize:vertical;'></textarea><br /><br />
-                <input type='submit' value='Ajouter'>
-                <input type='submit' value='Annuler'>
-            </form>
-        {% endif %}
-    </body>
-</html>
+{% block title %}Reef - Accueil{% endblock %}
+
+{% block body %}
+        <a href="./logout" class="text-blue-600"><button class="bg-white shadow-md rounded p-3 absolute right-2 top-2 hover:underline">Déconnexion</button></a>
+        <div class="grid place-items-center text-center mb-5 mt-5">
+            <div class="bg-white shadow-md rounded text-blue-600 w-1/2 py-2">
+                <h1 class="text-3xl font-bold underline">Bienvenue, {{ user_email }}!</h1>
+            </div>
+        </div>
+
+        <div class="grid place-items-center">
+            <div class="bg-white shadow-md rounded px-8 pt-6 mb-4 w-1/2">
+                <div class='flex justify-between items-center mb-4'>
+                    <h2 class="text-3xl font-bold text-blue-600">Liste des messages</h2>
+                    <a href="./new"><button class="bg-blue-600 text-white font-bold rounded-full px-3 py-2 text-center hover:bg-blue-800">+</button></a>
+                </div>
+                <hr class="mb-6">
+                {% for message in messages %}
+                    <div class="mb-5">
+                        <div class="flex justify-between">
+                            <div>{{ message[0].user_mail }}</div>
+                            <div>{{  message[0].date }}</div>
+                        </div>
+                        <div class="mb-5">{{ message[0].content }}</div>
+                        <hr>
+                    </div>
+                {% endfor %}
+                <form method='post' class="flex mb-4 justify-between">
+                    <button type='submit' name='decrementOffset' value='{{ offset }}' class="bg-blue-600 text-white font-bold rounded-full px-3 py-2 text-center hover:bg-blue-800"><</button>
+                    <button type='submit' name='incrementOffset' value='{{ offset }}' class="bg-blue-600 text-white font-bold rounded-full px-3 py-2 text-center hover:bg-blue-800">></button>
+                </form>
+            </div>
+        </div>
+{% endblock %}

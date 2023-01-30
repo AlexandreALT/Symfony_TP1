@@ -1,17 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Reef - Inscription{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+<div class="grid h-screen place-items-center">
+    <div>
+        <div class="h-24 w-24">
+            <img src="{{ asset('build/img/reef.png') }}" class="object-cover" alt="logo">
+        </div>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <div class="bg-white shadow-md rounded mt-5 px-8 pt-6 pb-8 mb-4">
+            <div class="mb-6">
+                <h1 class="text-3xl font-bold underline text-blue-600">Inscription</h1>
+            </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            {{ form_start(registrationForm) }}
+                <div class="mb-4">
+                    <label for="inputEmail" class="block text-gray-700 text-sm font-bold mb-2">{{ form_label(registrationForm.email) }}</label>
+                    {{ form_widget(registrationForm.email,{'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline','placeholder': 'Email'}}) }}
+                </div>
+
+                <div class="mb-2">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="inputPassword">Mot de passe</label>
+                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline','placeholder': 'Mot de passe'}}) }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="text-sm">{{ form_label(registrationForm.agreeTerms,"J'accepte les conditions d'utilisation") }}</label>
+                    {{ form_widget(registrationForm.agreeTerms) }}
+                </div>
+
+            <div class="text-center flex flex-col">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-3">S'inscrire</button>
+                <a href="./login" class="text-blue-600 font-bold py-2 px-4 rounded outline outline-2 outline-blue-600 hover:bg-slate-100">Annuler</a>
+            </div>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+</div>
 {% endblock %}

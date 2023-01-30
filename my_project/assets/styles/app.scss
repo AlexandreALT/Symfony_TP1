@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$background: url(../img/underwater.jpg);
+
+body {
+  background-image: $background;
+  background-size: cover;
+}

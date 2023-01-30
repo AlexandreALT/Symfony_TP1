@@ -34,6 +34,12 @@ Encore
 
   .enablePostCssLoader()
 
+  .enableSassLoader()
+
+  .copyFiles({
+    from: "./assets/img",
+    to: "img/[path][name].[ext]",
+  })
   /*
    * FEATURE CONFIG
    *

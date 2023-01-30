@@ -1,0 +1,17 @@
+﻿{% extends 'base.html.twig' %}
+
+{% block title %}Reef - Nouveau message{% endblock %}
+
+{% block body %}
+    <div class="grid h-screen place-items-center">
+        <div class="bg-white shadow-md rounded px-8 py-2 w-1/2">
+            <h1 class="text-3xl font-bold underline text-blue-600 text-center">Nouveau message</h1>
+            <label for="inputMessage" class="block text-gray-700 text-sm font-bold mb-2">{{ form_label(formNewMessage.content) }}</label>
+            {{ form_widget(formNewMessage.content,{'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline','placeholder': 'Entrez votre message ici...','rows': '5'}}) }}
+            <div class="flex justify-between">
+                {{ form_widget(formNewMessage.save,{'attr': {'class': 'bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'}}) }}
+                <a href="./home" class="text-blue-600 font-bold py-2 px-4 rounded outline outline-2 outline-blue-600 hover:bg-slate-100">Annuler</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
