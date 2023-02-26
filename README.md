@@ -11,4 +11,4 @@ To start the project, launch a CMD, go on the project's directory and run
 symfony server:start
 ```
 
-Then launch your navigator, type the URL of the site (# Example:
+Then launch your navigator, type the URL of the site (Example: "localhost:8000") and add "/login" at the end to access the login page of the app.
