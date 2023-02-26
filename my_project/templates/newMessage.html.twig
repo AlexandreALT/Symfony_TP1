@@ -3,6 +3,7 @@
 {% block title %}Reef - Nouveau message{% endblock %}
 
 {% block body %}
+{{ form_start(formNewMessage) }}
     <div class="grid h-screen place-items-center">
         <div class="bg-white shadow-md rounded px-8 py-2 w-1/2">
             <h1 class="text-3xl font-bold underline text-blue-600 text-center">Nouveau message</h1>
@@ -14,4 +15,5 @@
             </div>
         </div>
     </div>
+{{ form_end(formNewMessage) }}
 {% endblock %}

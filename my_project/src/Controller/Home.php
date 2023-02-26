@@ -30,8 +30,16 @@ class Home extends AbstractController
     {
         $user = $this->security->getUser();
 
+        if(isset($_POST['deleteMessage'])) {
+            $em = $this->getDoctrine()->getManager();
+
+            $deleteMessage = $doctrine->getRepository(Message::class)->find($_POST['deleteMessage']);
+            $em->remove($deleteMessage);
+            $em->flush();
+        }
+
         if (isset($_POST['incrementOffset'])) $offset = $_POST['incrementOffset'] + 5;
-        else if (isset($_POST['decrementOffset'])) $offset = $_POST['decrementOffset'] - 5;
+        else if (isset($_POST['decrementOffset']) && $_POST['decrementOffset'] - 5 >= 0) $offset = $_POST['decrementOffset'] - 5;
         else $offset = 0;
 
         $messages = $doctrine->getRepository(Message::class)->findBy(array(), array('date' => 'DESC'), 5, $offset);
@@ -41,11 +49,12 @@ class Home extends AbstractController
         foreach ($messages as $message) {
             $tabMessage = array();
 
+            $id = $message->getId();
             $content = $message->getContent();
             $date = date("d/m/Y", date_timestamp_get($message->getDate()));
             $userMessage = $doctrine->getRepository(User::class)->find($message->getUserId());
 
-            array_push($tabMessage, array('content' => $content, 'date' => $date, 'user_mail' => $userMessage->getEmail()));
+            array_push($tabMessage, array('id' => $id, 'content' => $content, 'date' => $date, 'user_mail' => $userMessage->getEmail()));
             array_push($tab, $tabMessage);
         }
 

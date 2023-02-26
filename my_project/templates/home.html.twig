@@ -19,11 +19,18 @@
                 <hr class="mb-6">
                 {% for message in messages %}
                     <div class="mb-5">
-                        <div class="flex justify-between">
+                        <div class="flex justify-between font-bold underline">
                             <div>{{ message[0].user_mail }}</div>
                             <div>{{  message[0].date }}</div>
                         </div>
-                        <div class="mb-5">{{ message[0].content }}</div>
+                        {% if message[0].user_mail == user_email %}
+                            <div>{{ message[0].content }}</div>
+                            <form method='post' class="mb-5 bg-blue-600 text-white font-bold rounded-full px-3 py-2 text-center text-xs hover:bg-blue-800 w-min mr-0 ml-auto">
+                                <button type='submit' name='deleteMessage' value='{{ message[0].id }}'>Supprimer</button>
+                            </form>
+                        {% else %}
+                            <div class="mb-5">{{ message[0].content }}</div>
+                        {% endif %}
                         <hr>
                     </div>
                 {% endfor %}
