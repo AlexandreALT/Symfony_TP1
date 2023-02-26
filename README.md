@@ -16,7 +16,7 @@ Then launch your navigator, type the URL of the site (Example: "localhost:8000")
 ## Screenshots
 
 ![login](https://user-images.githubusercontent.com/75270856/221415358-627adce9-630b-474a-b88c-d886e59f6885.png)
-<p align="center">Login Page</p>
+*Login Page*
 
 ![register](https://user-images.githubusercontent.com/75270856/221415424-18eaed12-1d81-4bef-aa1c-43279eb18ccc.png)
 <p align="center">Register Page</p>
