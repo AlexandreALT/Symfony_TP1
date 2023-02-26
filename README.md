@@ -10,3 +10,5 @@ To start the project, launch a CMD, go on the project's directory and run
 ```bash
 symfony server:start
 ```
+
+Then launch your navigator, type the URL of the site (=Example=:
