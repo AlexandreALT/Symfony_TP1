@@ -15,5 +15,5 @@ Then launch your navigator, type the URL of the site (Example: "localhost:8000")
 
 ## Screenshots
 
-<img src="[https://your-image-url.type](https://user-images.githubusercontent.com/75270856/221415158-3d915098-3147-445a-be24-9a5ef96c2f73.png)" width="100" height="100">
+<img src="https://user-images.githubusercontent.com/75270856/221415158-3d915098-3147-445a-be24-9a5ef96c2f73.png" width="100" height="100">
 Login Page
